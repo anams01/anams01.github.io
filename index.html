@@ -467,17 +467,303 @@
         }
 
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2em;
+            body {
+                padding: 10px;
             }
-            
-            .contact-info {
+
+            .container {
+                border-radius: 15px;
+            }
+
+            header {
+                padding: 40px 20px;
+            }
+
+            .profile-img {
+                width: 150px;
+                height: 150px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .subtitle {
+                font-size: 1.1em;
+            }
+
+            .nav-menu {
+                padding: 10px 20px;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .nav-menu ul {
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+            }
+
+            .nav-menu li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-menu a {
+                display: block;
+                padding: 8px 15px;
+                border-radius: 5px;
+                background: rgba(102, 126, 234, 0.1);
+                transition: all 0.3s;
+            }
+
+            .nav-menu a:hover {
+                background: rgba(102, 126, 234, 0.2);
+                color: #667eea;
+            }
+
+            .translate-btn {
+                position: static;
+                transform: none;
+                align-self: center;
+                margin-top: 10px;
+            }
+
+            main {
+                padding: 20px;
+            }
+
+            section {
+                margin-bottom: 40px;
+            }
+
+            h2 {
+                font-size: 1.5em;
+                margin-bottom: 20px;
+            }
+
+            /* About section mobile */
+            #sobre-mi > div:first-of-type {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+
+            #sobre-mi img {
+                width: 200px;
+                height: 200px;
+                align-self: center;
+            }
+
+            .about-content p {
+                font-size: 0.95em;
+                line-height: 1.6;
+            }
+
+            /* Stats mobile */
+            .stats {
                 flex-direction: column;
                 gap: 15px;
             }
-            
-            main {
+
+            .stat-card {
+                padding: 15px;
+                text-align: center;
+            }
+
+            .stat-number {
+                font-size: 2em;
+            }
+
+            .stat-label {
+                font-size: 0.9em;
+            }
+
+            /* Timeline mobile */
+            .timeline-item::before {
+                left: 20px;
+            }
+
+            .experience-item {
+                margin-left: 50px;
+                padding: 15px;
+            }
+
+            .experience-item h3 {
+                font-size: 1.1em;
+            }
+
+            .company {
+                font-size: 0.95em;
+            }
+
+            .date-location {
+                font-size: 0.85em;
+            }
+
+            /* Projects grid mobile */
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .project-card {
                 padding: 20px;
+            }
+
+            .project-card h3 {
+                font-size: 1.2em;
+            }
+
+            .project-tags {
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .project-tag {
+                font-size: 0.8em;
+                padding: 4px 8px;
+            }
+
+            /* Education mobile */
+            .education-item {
+                padding: 15px;
+                margin-bottom: 20px;
+            }
+
+            .education-item h3 {
+                font-size: 1.1em;
+            }
+
+            .university {
+                font-size: 0.95em;
+            }
+
+            .date-location {
+                font-size: 0.85em;
+            }
+
+            /* Skills grid mobile */
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: 10px;
+            }
+
+            .skill-tag {
+                font-size: 0.85em;
+                padding: 8px 12px;
+            }
+
+            /* Languages mobile */
+            .lang-item {
+                font-size: 0.95em;
+            }
+
+            /* Certifications mobile */
+            .certifications {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .cert-item {
+                padding: 15px;
+                text-align: center;
+            }
+
+            /* Contact section mobile */
+            .cta-section {
+                text-align: center;
+                padding: 30px 20px;
+            }
+
+            .cta-section h2 {
+                font-size: 1.4em;
+            }
+
+            .cta-section p {
+                font-size: 1em;
+                margin-bottom: 25px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 15px;
+                align-items: center;
+            }
+
+            .btn {
+                width: 200px;
+                padding: 12px 20px;
+                font-size: 1em;
+            }
+
+            /* Footer mobile */
+            footer {
+                padding: 15px;
+                text-align: center;
+            }
+
+            footer p {
+                font-size: 0.9em;
+            }
+
+            /* Scroll top mobile */
+            .scroll-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+                font-size: 1.2em;
+            }
+        }
+
+        /* Extra small screens */
+        @media (max-width: 480px) {
+            body {
+                padding: 5px;
+            }
+
+            header {
+                padding: 30px 15px;
+            }
+
+            .profile-img {
+                width: 120px;
+                height: 120px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .subtitle {
+                font-size: 1em;
+            }
+
+            .nav-menu {
+                padding: 10px 15px;
+            }
+
+            main {
+                padding: 15px;
+            }
+
+            #sobre-mi img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .stat-number {
+                font-size: 1.8em;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            }
+
+            .btn {
+                width: 180px;
+                padding: 10px 15px;
             }
         }
     </style>
