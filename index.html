@@ -384,6 +384,10 @@
             padding: 15px 40px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
         }
 
         .nav-menu ul {
@@ -404,6 +408,27 @@
 
         .nav-menu a:hover {
             color: #667eea;
+        }
+
+        .translate-btn {
+            position: absolute;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #667eea;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.9em;
+            transition: all 0.3s;
+            box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+        }
+
+        .translate-btn:hover {
+            background: #5a67d8;
+            transform: translateY(-50%) scale(1.05);
         }
 
         footer {
@@ -476,6 +501,9 @@
                 <li><a href="#certificaciones">Certificaciones</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
+            <div class="translate-btn" id="translateBtn" title="Translate to English">
+                🌍 EN
+            </div>
         </nav>
 
         <main>
@@ -756,7 +784,7 @@
                 });
             }
 
-            // Animación de entrada para las cards
+        // Animación de entrada para las cards
             const observerOptions = {
                 threshold: 0.1,
                 rootMargin: '0px 0px -50px 0px'
@@ -777,6 +805,321 @@
                 el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
                 observer.observe(el);
             });
+
+            // Translation functionality
+            const translations = {
+                es: {
+                    title: "ANA MARTÍN SERRANO",
+                    titles: [
+                        'Ingeniera Informática',
+                        'Ingeniera de Diseño',
+                        'Ingeniera de FPGA',
+                        'Estudiante de Big Data',
+                        'Amante de las Tecnologías',
+                        'Desarrolladora de Hardware'
+                    ],
+                    nav: {
+                        about: "Sobre Mí",
+                        experience: "Experiencia",
+                        projects: "Proyectos",
+                        education: "Educación",
+                        skills: "Habilidades",
+                        certifications: "Certificaciones",
+                        contact: "Contacto"
+                    },
+                    sections: {
+                        about: {
+                            title: "👋 Sobre Mí",
+                            content1: "Ingeniera de Lógica Programable especializada en diseño de sistemas FPGA y hardware digital. Con experiencia en proyectos aeroespaciales de alto nivel, incluyendo el desarrollo de sistemas de cifrado para el satélite Galileo de Segunda Generación.",
+                            content2: "Apasionada por la tecnología espacial, los sistemas embebidos y el diseño de hardware. Actualmente ampliando mis conocimientos en Big Data y Análisis de Datos para combinar el diseño de hardware con la inteligencia de datos."
+                        },
+                        experience: {
+                            title: "💼 Experiencia Profesional",
+                            job1: {
+                                title: "Ingeniero de Diseño",
+                                company: "Cipherbit - Grupo Oesía",
+                                date: "📅 Agosto 2023 - Noviembre 2025 | 📍 Valdepeñas, Spain",
+                                desc: "Participación en el proyecto G2G-FD, centrado en el desarrollo de un sistema de cifrado de claves destinado al satélite Galileo de Segunda Generación."
+                            },
+                            job2: {
+                                title: "Ingeniero de Diseño",
+                                company: "Tecnobit - Grupo Oesía",
+                                date: "📅 Febrero 2023 - Julio 2023 | 📍 Valdepeñas, Spain",
+                                desc: "Realización de prácticas de empresa y TFG sobre comparación de recursos entre una FPGA Xilinx y una NanoXplore mediante un diseño en VHDL."
+                            }
+                        },
+                        projects: {
+                            title: "🚀 Proyectos Destacados",
+                            project1: {
+                                title: "Sistema de Cifrado Galileo G2G-FD",
+                                desc: "Desarrollo de un sistema de cifrado de claves para el satélite Galileo de Segunda Generación, garantizando la seguridad de las comunicaciones espaciales.",
+                                tags: ["VHDL", "Xilinx", "Cifrado", "Aeroespacial"]
+                            },
+                            project2: {
+                                title: "Comparativa FPGA Xilinx vs NanoXplore",
+                                desc: "Trabajo de Fin de Grado enfocado en el análisis comparativo de recursos y rendimiento entre diferentes tecnologías FPGA.",
+                                tags: ["VHDL", "ModelSim", "Análisis", "FPGA"]
+                            },
+                            project3: {
+                                title: "Diseño de Sistemas Digitales",
+                                desc: "Implementación de sistemas digitales complejos utilizando herramientas de síntesis y simulación profesionales.",
+                                tags: ["Vivado", "Vitis HDL", "TCL"]
+                            }
+                        },
+                        education: {
+                            title: "🎓 Educación",
+                            master: {
+                                title: "Máster en Big Data y Análisis de Datos",
+                                university: "Universidad de Castilla-La Mancha",
+                                date: "📅 Septiembre 2025 - Presente"
+                            },
+                            degree: {
+                                title: "Grado en Ingeniería Informática",
+                                university: "Universidad de Castilla-La Mancha",
+                                date: "📅 Enero 2019 - Diciembre 2023"
+                            }
+                        },
+                        skills: {
+                            title: "🛠️ Habilidades Técnicas"
+                        },
+                        languages: {
+                            title: "🌍 Idiomas",
+                            english: "Inglés: Avanzado ⭐⭐⭐⭐"
+                        },
+                        certifications: {
+                            title: "📜 Certificaciones",
+                            cert1: "B2 First – Score 161<br>Cambridge University Press & Assessment English",
+                            cert2: "Permiso B de Conducción<br>Dirección General de Tráfico"
+                        },
+                        contact: {
+                            title: "¿Trabajamos Juntos?",
+                            content: "Estoy abierta a nuevas oportunidades y colaboraciones en el ámbito de diseño de hardware, sistemas FPGA y análisis de datos.",
+                            email: "📧 Enviar Email",
+                            linkedin: "💼 Ver LinkedIn",
+                            cv: "📄 Ver CV"
+                        }
+                    },
+                    stats: {
+                        experience: "Años de Experiencia",
+                        technologies: "Tecnologías Dominadas",
+                        dedication: "Dedicación"
+                    },
+                    footer: "Diseñado con ❤️ para GitHub Pages"
+                },
+                en: {
+                    title: "ANA MARTÍN SERRANO",
+                    titles: [
+                        'Computer Engineer',
+                        'Design Engineer',
+                        'FPGA Engineer',
+                        'Big Data Student',
+                        'Technology Lover',
+                        'Hardware Developer'
+                    ],
+                    nav: {
+                        about: "About Me",
+                        experience: "Experience",
+                        projects: "Projects",
+                        education: "Education",
+                        skills: "Skills",
+                        certifications: "Certifications",
+                        contact: "Contact"
+                    },
+                    sections: {
+                        about: {
+                            title: "👋 About Me",
+                            content1: "Programmable Logic Engineer specialized in FPGA systems design and digital hardware. With experience in high-level aerospace projects, including the development of encryption systems for the Second Generation Galileo satellite.",
+                            content2: "Passionate about space technology, embedded systems and hardware design. Currently expanding my knowledge in Big Data and Data Analysis to combine hardware design with data intelligence."
+                        },
+                        experience: {
+                            title: "💼 Professional Experience",
+                            job1: {
+                                title: "Design Engineer",
+                                company: "Cipherbit - Grupo Oesía",
+                                date: "📅 August 2023 - November 2025 | 📍 Valdepeñas, Spain",
+                                desc: "Participation in the G2G-FD project, focused on the development of a key encryption system for the Second Generation Galileo satellite."
+                            },
+                            job2: {
+                                title: "Design Engineer",
+                                company: "Tecnobit - Grupo Oesía",
+                                date: "📅 February 2023 - July 2023 | 📍 Valdepeñas, Spain",
+                                desc: "Company internship and Final Degree Project on resource comparison between Xilinx FPGA and NanoXplore through VHDL design."
+                            }
+                        },
+                        projects: {
+                            title: "🚀 Featured Projects",
+                            project1: {
+                                title: "Galileo G2G-FD Encryption System",
+                                desc: "Development of a key encryption system for the Second Generation Galileo satellite, ensuring the security of space communications.",
+                                tags: ["VHDL", "Xilinx", "Encryption", "Aerospace"]
+                            },
+                            project2: {
+                                title: "Xilinx vs NanoXplore FPGA Comparison",
+                                desc: "Final Degree Project focused on the comparative analysis of resources and performance between different FPGA technologies.",
+                                tags: ["VHDL", "ModelSim", "Analysis", "FPGA"]
+                            },
+                            project3: {
+                                title: "Digital Systems Design",
+                                desc: "Implementation of complex digital systems using professional synthesis and simulation tools.",
+                                tags: ["Vivado", "Vitis HDL", "TCL"]
+                            }
+                        },
+                        education: {
+                            title: "🎓 Education",
+                            master: {
+                                title: "Master's in Big Data and Data Analysis",
+                                university: "University of Castilla-La Mancha",
+                                date: "📅 September 2025 - Present"
+                            },
+                            degree: {
+                                title: "Bachelor's in Computer Engineering",
+                                university: "University of Castilla-La Mancha",
+                                date: "📅 January 2019 - December 2023"
+                            }
+                        },
+                        skills: {
+                            title: "🛠️ Technical Skills"
+                        },
+                        languages: {
+                            title: "🌍 Languages",
+                            english: "English: Advanced ⭐⭐⭐⭐"
+                        },
+                        certifications: {
+                            title: "📜 Certifications",
+                            cert1: "B2 First – Score 161<br>Cambridge University Press & Assessment English",
+                            cert2: "B Driving License<br>Dirección General de Tráfico"
+                        },
+                        contact: {
+                            title: "Let's Work Together?",
+                            content: "I'm open to new opportunities and collaborations in the field of hardware design, FPGA systems and data analysis.",
+                            email: "📧 Send Email",
+                            linkedin: "💼 View LinkedIn",
+                            cv: "📄 View CV"
+                        }
+                    },
+                    stats: {
+                        experience: "Years of Experience",
+                        technologies: "Technologies Mastered",
+                        dedication: "Dedication"
+                    },
+                    footer: "Designed with ❤️ for GitHub Pages"
+                }
+            };
+
+            let currentLang = 'es';
+
+            function translatePage(lang) {
+                currentLang = lang;
+                const t = translations[lang];
+
+                // Update title
+                document.querySelector('h1').textContent = t.title;
+
+                // Update typing titles
+                titles.length = 0;
+                t.titles.forEach(title => titles.push(title));
+
+                // Update navigation
+                const navLinks = document.querySelectorAll('.nav-menu a');
+                navLinks[0].textContent = t.nav.about;
+                navLinks[1].textContent = t.nav.experience;
+                navLinks[2].textContent = t.nav.projects;
+                navLinks[3].textContent = t.nav.education;
+                navLinks[4].textContent = t.nav.skills;
+                navLinks[5].textContent = t.nav.certifications;
+                navLinks[6].textContent = t.nav.contact;
+
+                // Update sections
+                document.querySelector('#sobre-mi h2').textContent = t.sections.about.title;
+                const aboutParas = document.querySelectorAll('#sobre-mi .about-content p');
+                aboutParas[0].textContent = t.sections.about.content1;
+                aboutParas[1].textContent = t.sections.about.content2;
+
+                // Update stats
+                const statLabels = document.querySelectorAll('.stat-label');
+                statLabels[0].textContent = t.stats.experience;
+                statLabels[1].textContent = t.stats.technologies;
+                statLabels[2].textContent = t.stats.dedication;
+
+                // Update experience
+                document.querySelector('#experiencia h2').textContent = t.sections.experience.title;
+                const expItems = document.querySelectorAll('.experience-item');
+                expItems[0].querySelector('h3').textContent = t.sections.experience.job1.title;
+                expItems[0].querySelector('.company').textContent = t.sections.experience.job1.company;
+                expItems[0].querySelector('.date-location').textContent = t.sections.experience.job1.date;
+                expItems[0].querySelector('p:not(.company):not(.date-location)').textContent = t.sections.experience.job1.desc;
+
+                expItems[1].querySelector('h3').textContent = t.sections.experience.job2.title;
+                expItems[1].querySelector('.company').textContent = t.sections.experience.job2.company;
+                expItems[1].querySelector('.date-location').textContent = t.sections.experience.job2.date;
+                expItems[1].querySelector('p:not(.company):not(.date-location)').textContent = t.sections.experience.job2.desc;
+
+                // Update projects
+                document.querySelector('#proyectos h2').textContent = t.sections.projects.title;
+                const projectCards = document.querySelectorAll('.project-card');
+                projectCards[0].querySelector('h3').textContent = t.sections.projects.project1.title;
+                projectCards[0].querySelector('p').textContent = t.sections.projects.project1.desc;
+                const tags1 = projectCards[0].querySelectorAll('.project-tag');
+                tags1.forEach((tag, i) => tag.textContent = t.sections.projects.project1.tags[i]);
+
+                projectCards[1].querySelector('h3').textContent = t.sections.projects.project2.title;
+                projectCards[1].querySelector('p').textContent = t.sections.projects.project2.desc;
+                const tags2 = projectCards[1].querySelectorAll('.project-tag');
+                tags2.forEach((tag, i) => tag.textContent = t.sections.projects.project2.tags[i]);
+
+                projectCards[2].querySelector('h3').textContent = t.sections.projects.project3.title;
+                projectCards[2].querySelector('p').textContent = t.sections.projects.project3.desc;
+                const tags3 = projectCards[2].querySelectorAll('.project-tag');
+                tags3.forEach((tag, i) => tag.textContent = t.sections.projects.project3.tags[i]);
+
+                // Update education
+                document.querySelector('#educacion h2').textContent = t.sections.education.title;
+                const eduItems = document.querySelectorAll('.education-item');
+                eduItems[0].querySelector('h3').textContent = t.sections.education.master.title;
+                eduItems[0].querySelector('.university').textContent = t.sections.education.master.university;
+                eduItems[0].querySelector('.date-location').textContent = t.sections.education.master.date;
+
+                eduItems[1].querySelector('h3').textContent = t.sections.education.degree.title;
+                eduItems[1].querySelector('.university').textContent = t.sections.education.degree.university;
+                eduItems[1].querySelector('.date-location').textContent = t.sections.education.degree.date;
+
+                // Update skills
+                document.querySelector('#habilidades h2').textContent = t.sections.skills.title;
+
+                // Update languages
+                document.querySelector('#idiomas h2').textContent = t.sections.languages.title;
+                document.querySelector('.lang-item strong').textContent = t.sections.languages.english;
+
+                // Update certifications
+                document.querySelector('#certificaciones h2').textContent = t.sections.certifications.title;
+                const certItems = document.querySelectorAll('.cert-item');
+                certItems[0].innerHTML = `<strong>${t.sections.certifications.cert1}</strong>`;
+                certItems[1].innerHTML = `<strong>${t.sections.certifications.cert2}</strong>`;
+
+                // Update contact
+                document.querySelector('.cta-section h2').textContent = t.sections.contact.title;
+                document.querySelector('.cta-section p').textContent = t.sections.contact.content;
+                const ctaButtons = document.querySelectorAll('.cta-buttons a');
+                ctaButtons[0].textContent = t.sections.contact.email;
+                ctaButtons[1].textContent = t.sections.contact.linkedin;
+                ctaButtons[2].textContent = t.sections.contact.cv;
+
+                // Update footer
+                const footerParas = document.querySelectorAll('footer p');
+                footerParas[1].textContent = t.footer;
+
+                // Update button text
+                const translateBtn = document.getElementById('translateBtn');
+                translateBtn.textContent = lang === 'es' ? '🌍 ES' : '🌍 EN';
+                translateBtn.title = lang === 'es' ? 'Translate to English' : 'Traducir al Español';
+            }
+
+            // Add click event to translate button
+            document.getElementById('translateBtn').addEventListener('click', function() {
+                const newLang = currentLang === 'es' ? 'en' : 'es';
+                translatePage(newLang);
+            });
+
         });
     </script>
 </body>
