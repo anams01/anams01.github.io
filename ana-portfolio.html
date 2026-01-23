@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ana Martín Serrano - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .binary-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            opacity: 0.15;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            pointer-events: none;
+        }
+
+        .binary-line {
+            position: absolute;
+            white-space: nowrap;
+            animation: scrollBinary 20s linear infinite;
+        }
+
+        @keyframes scrollBinary {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        header > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid white;
+            margin-bottom: 20px;
+            object-fit: cover;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: opacity 0.3s;
+        }
+
+        .contact-info a:hover {
+            opacity: 0.8;
+        }
+
+        main {
+            padding: 40px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .experience-item, .education-item {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .experience-item h3, .education-item h3 {
+            color: #333;
+            font-size: 1.3em;
+            margin-bottom: 5px;
+        }
+
+        .company, .university {
+            color: #764ba2;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .date-location {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 25px;
+            text-align: center;
+            font-size: 0.9em;
+            transition: transform 0.3s;
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-3px);
+        }
+
+        .certifications, .languages {
+            display: grid;
+            gap: 15px;
+        }
+
+        .cert-item, .lang-item {
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #764ba2;
+        }
+
+        .cert-item strong, .lang-item strong {
+            color: #667eea;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -36px;
+            top: 0;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #667eea;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #667eea;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .project-card h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .project-tag {
+            background: #e0e7ff;
+            color: #667eea;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+        }
+
+        .about-content {
+            background: linear-gradient(135deg, #f6f8fb 0%, #e9ecef 100%);
+            padding: 30px;
+            border-radius: 15px;
+            line-height: 1.8;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            border-radius: 15px;
+            margin: 40px 0;
+        }
+
+        .cta-section h2 {
+            color: white;
+            border: none;
+            margin-bottom: 20px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255,255,255,0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        .nav-menu {
+            background: rgba(255, 255, 255, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 15px 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .nav-menu a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 10px;
+        }
+
+        .nav-menu a:hover {
+            color: #667eea;
+        }
+
+        footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #667eea;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+            opacity: 0;
+            transition: all 0.3s;
+            pointer-events: none;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            main {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="binary-bg" id="binaryBg"></div>
+            <img src="foto.jpg" alt="Ana Martín Serrano" class="profile-img">
+            <h1>ANA MARTÍN SERRANO</h1>
+            <p class="subtitle">Ingeniera Informática</p>
+            <div class="contact-info">
+                <a href="tel:+34620180519">📱 620 180 519</a>
+                <a href="mailto:ana18052001@hotmail.com">✉️ ana18052001@hotmail.com</a>
+                <a href="https://linkedin.com/in/ana-mart%C3%ADnserrano-5285b8222" target="_blank">🔗 LinkedIn</a>
+                <span>📍 Ciudad Real</span>
+            </div>
+        </header>
+
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="#sobre-mi">Sobre Mí</a></li>
+                <li><a href="#experiencia">Experiencia</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#educacion">Educación</a></li>
+                <li><a href="#habilidades">Habilidades</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <section id="sobre-mi">
+                <h2>👋 Sobre Mí</h2>
+                <div class="about-content">
+                    <p>Ingeniera de Lógica Programable especializada en diseño de sistemas FPGA y hardware digital. Con experiencia en proyectos aeroespaciales de alto nivel, incluyendo el desarrollo de sistemas de cifrado para el satélite Galileo de Segunda Generación.</p>
+                    <br>
+                    <p>Apasionada por la tecnología espacial, los sistemas embebidos y el diseño de hardware. Actualmente ampliando mis conocimientos en Big Data y Análisis de Datos para combinar el diseño de hardware con la inteligencia de datos.</p>
+                </div>
+
+                <div class="stats">
+                    <div class="stat-card">
+                        <span class="stat-number">2+</span>
+                        <span class="stat-label">Años de Experiencia</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">13+</span>
+                        <span class="stat-label">Tecnologías Dominadas</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">2</span>
+                        <span class="stat-label">Certificaciones</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Dedicación</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="experiencia">
+                <h2>💼 Experiencia Profesional</h2>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="experience-item">
+                            <h3>Ingeniero de Diseño</h3>
+                            <p class="company">Cipherbit - Grupo Oesía</p>
+                            <p class="date-location">📅 Agosto 2023 - Noviembre 2025 | 📍 Valdepeñas, Spain</p>
+                            <p>Participación en el proyecto G2G-FD, centrado en el desarrollo de un sistema de cifrado de claves destinado al satélite Galileo de Segunda Generación.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="experience-item">
+                            <h3>Ingeniero de Diseño</h3>
+                            <p class="company">Tecnobit - Grupo Oesía</p>
+                            <p class="date-location">📅 Febrero 2023 - Julio 2023 | 📍 Valdepeñas, Spain</p>
+                            <p>Realización de prácticas de empresa y TFG sobre comparación de recursos entre una FPGA Xilinx y una NanoXplore mediante un diseño en VHDL.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="proyectos">
+                <h2>🚀 Proyectos Destacados</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <h3>Sistema de Cifrado Galileo G2G-FD</h3>
+                        <p>Desarrollo de un sistema de cifrado de claves para el satélite Galileo de Segunda Generación, garantizando la seguridad de las comunicaciones espaciales.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">VHDL</span>
+                            <span class="project-tag">Xilinx</span>
+                            <span class="project-tag">Cifrado</span>
+                            <span class="project-tag">Aeroespacial</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>Comparativa FPGA Xilinx vs NanoXplore</h3>
+                        <p>Trabajo de Fin de Grado enfocado en el análisis comparativo de recursos y rendimiento entre diferentes tecnologías FPGA.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">VHDL</span>
+                            <span class="project-tag">ModelSim</span>
+                            <span class="project-tag">Análisis</span>
+                            <span class="project-tag">FPGA</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>Diseño de Sistemas Digitales</h3>
+                        <p>Implementación de sistemas digitales complejos utilizando herramientas de síntesis y simulación profesionales.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Vivado</span>
+                            <span class="project-tag">Vitis HDL</span>
+                            <span class="project-tag">TCL</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="educacion">
+                <h2>🎓 Educación</h2>
+                
+                <div class="education-item">
+                    <h3>Máster en Big Data y Análisis de Datos</h3>
+                    <p class="university">Universidad de Castilla-La Mancha</p>
+                    <p class="date-location">📅 Septiembre 2025 - Presente</p>
+                </div>
+
+                <div class="education-item">
+                    <h3>Grado en Ingeniería Informática</h3>
+                    <p class="university">Universidad de Castilla-La Mancha</p>
+                    <p class="date-location">📅 Enero 2019 - Diciembre 2023</p>
+                </div>
+            </section>
+
+            <section id="habilidades">
+                <h2>🛠️ Habilidades Técnicas</h2>
+                <div class="skills-grid">
+                    <div class="skill-tag">Python</div>
+                    <div class="skill-tag">VHDL</div>
+                    <div class="skill-tag">TCL</div>
+                    <div class="skill-tag">ModelSim</div>
+                    <div class="skill-tag">Xilinx</div>
+                    <div class="skill-tag">Vivado</div>
+                    <div class="skill-tag">Vitis HDL</div>
+                    <div class="skill-tag">Visual Studio Code</div>
+                    <div class="skill-tag">Git</div>
+                    <div class="skill-tag">GitLab</div>
+                    <div class="skill-tag">Jira</div>
+                    <div class="skill-tag">SAFe</div>
+                    <div class="skill-tag">C/C++</div>
+                </div>
+            </section>
+
+            <section id="idiomas">
+                <h2>🌍 Idiomas</h2>
+                <div class="languages">
+                    <div class="lang-item">
+                        <strong>Inglés:</strong> Avanzado ⭐⭐⭐⭐
+                    </div>
+                </div>
+            </section>
+
+            <section id="certificaciones">
+                <h2>📜 Certificaciones</h2>
+                <div class="certifications">
+                    <div class="cert-item">
+                        <strong>B2 First – Score 161</strong><br>
+                        Cambridge University Press & Assessment English
+                    </div>
+                    <div class="cert-item">
+                        <strong>Permiso B de Conducción</strong><br>
+                        Dirección General de Tráfico
+                    </div>
+                </div>
+            </section>
+
+            <section id="contacto">
+                <div class="cta-section">
+                    <h2>¿Trabajamos Juntos?</h2>
+                    <p style="font-size: 1.1em; opacity: 0.95;">Estoy abierta a nuevas oportunidades y colaboraciones en el ámbito de diseño de hardware, sistemas FPGA y análisis de datos.</p>
+                    <div class="cta-buttons">
+                        <a href="mailto:ana18052001@hotmail.com" class="btn btn-primary">📧 Enviar Email</a>
+                        <a href="https://linkedin.com/in/ana-mart%C3%ADnserrano-5285b8222" target="_blank" class="btn btn-secondary">💼 Ver LinkedIn</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Ana Martín Serrano. Todos los derechos reservados.</p>
+            <p style="margin-top: 10px; font-size: 0.9em; opacity: 0.8;">Diseñado con ❤️ para GitHub Pages</p>
+        </footer>
+    </div>
+
+    <div class="scroll-top" id="scrollTop">
+        ↑
+    </div>
+
+    <script>
+        // Generar números binarios animados en el header
+        function createBinaryBackground() {
+            const binaryBg = document.getElementById('binaryBg');
+            const numLines = 15;
+            
+            for (let i = 0; i < numLines; i++) {
+                const line = document.createElement('div');
+                line.className = 'binary-line';
+                
+                // Generar cadena binaria aleatoria
+                let binaryString = '';
+                for (let j = 0; j < 150; j++) {
+                    binaryString += Math.random() > 0.5 ? '1' : '0';
+                    if (j % 8 === 7) binaryString += '  '; // Espacios cada byte
+                }
+                
+                line.textContent = binaryString;
+                line.style.top = `${i * 7}%`;
+                line.style.animationDuration = `${15 + Math.random() * 15}s`;
+                line.style.animationDelay = `${Math.random() * 5}s`;
+                
+                binaryBg.appendChild(line);
+            }
+        }
+
+        // Inicializar el fondo binario
+        createBinaryBackground();
+
+        // Scroll suave para los enlaces del menú
+        document.querySelectorAll('.nav-menu a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Botón de scroll to top
+        const scrollTopBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Animación de entrada para las cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.project-card, .experience-item, .education-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
